@@ -1,6 +1,7 @@
 import React from "react";
 import Card from "./Card";
 import "./CardList.css";
+import PropTypes from "prop-types";
 
 const CardList = ({
   selectedBoard,
@@ -36,6 +37,20 @@ const CardList = ({
       </section>
     </div>
   );
+};
+
+CardList.propTypes = {
+  selectedCardsData: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      likesCount: PropTypes.number.isRequired,
+      message: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  selectedBoard: PropTypes.object.isRequired,
+  onUpdateLikes: PropTypes.func.isRequired,
+  onDeleteCard: PropTypes.func.isRequired,
+  onUpdateCardMessage: PropTypes.func.isRequired,
 };
 
 export default CardList;

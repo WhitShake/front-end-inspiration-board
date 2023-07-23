@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import './NewCardForm.css';
+import "./NewCardForm.css";
+import PropTypes from "prop-types";
 
 const NewCardForm = ({ createNewCard }) => {
   const [message, setMessage] = useState("");
@@ -16,17 +17,15 @@ const NewCardForm = ({ createNewCard }) => {
       likesCount: 0,
     };
 
-    createNewCard(newCard); //newCard.boardId
+    createNewCard(newCard);
     setMessage("");
   };
 
   return (
     <div>
-      {/* <h1 className="create-card-label">Create New Card</h1> */}
       <form onSubmit={handleSubmit} className="new-card-form">
-      <h1 className="create-card-label">Create New Card</h1>
+        <h1 className="create-card-label">Create New Card</h1>
         <section>
-          {/* <label htmlFor="message" className="message-label">Message:</label> */}
           <input
             type="text"
             id="message"
@@ -40,7 +39,11 @@ const NewCardForm = ({ createNewCard }) => {
           ></input>
           {message.length > 39 && <p>Please limit characters to under 40.</p>}
           <div>
-            <input type="submit" value="Create new Card" id="create-button"></input>
+            <input
+              type="submit"
+              value="Create new Card"
+              id="create-button"
+            ></input>
           </div>
         </section>
       </form>
@@ -48,6 +51,8 @@ const NewCardForm = ({ createNewCard }) => {
   );
 };
 
+NewCardForm.propTypes = {
+  createNewCard: PropTypes.func.isRequired,
+};
+
 export default NewCardForm;
-
-

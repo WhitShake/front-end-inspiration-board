@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import "./NewBoardForm.css";
+import PropTypes from "prop-types";
 
 const NewBoardForm = ({ onBoardSubmit, selectedBoardId }) => {
   const [title, setTitle] = useState("");
@@ -30,8 +31,6 @@ const NewBoardForm = ({ onBoardSubmit, selectedBoardId }) => {
     setSelectedImage(event.target.value);
   };
 
-  console.log(selectedImage)
-
   const handleSubmit = (event) => {
     event.preventDefault();
     const newBoard = {
@@ -52,7 +51,6 @@ const NewBoardForm = ({ onBoardSubmit, selectedBoardId }) => {
 
   return (
     <div>
-      {/* <h1 className="create-board-label">Create New Board</h1> */}
       {!isBoardFormVisible && (
         <button
           onClick={handleVisibilityButton}
@@ -71,7 +69,6 @@ const NewBoardForm = ({ onBoardSubmit, selectedBoardId }) => {
         <section className="board-form">
           <div className="card-form-inputs">
             <div className="title-owner">
-              {/* <label htmlFor="title">Title:</label> */}
               <input
                 type="text"
                 maxLength={40}
@@ -84,7 +81,6 @@ const NewBoardForm = ({ onBoardSubmit, selectedBoardId }) => {
                 placeholder="Enter Board Title"
               ></input>
               {title.length > 39 && <p>Please limit characters to under 40.</p>}
-              {/* <label htmlFor="owner">Owner:</label> */}
               <input
                 type="text"
                 maxLength={40}
@@ -143,6 +139,11 @@ const NewBoardForm = ({ onBoardSubmit, selectedBoardId }) => {
       </form>
     </div>
   );
+};
+
+NewBoardForm.propTypes = {
+  selectedBoardId: PropTypes.number,
+  onBoardSubmit: PropTypes.func.isRequired,
 };
 
 export default NewBoardForm;

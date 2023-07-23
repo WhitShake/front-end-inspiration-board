@@ -1,14 +1,9 @@
 import React from "react";
 import Board from "./Board";
 import "./BoardPicker.css";
-// import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-const BoardPicker = ({
-  boardsData,
-  onBoardSelect,
-  onDeleteBoard,
-  setSelectedBoardId,
-}) => {
+const BoardPicker = ({ boardsData, onBoardSelect, onDeleteBoard }) => {
   return (
     <div>
       <h1 className="boards-label">Boards</h1>
@@ -23,13 +18,25 @@ const BoardPicker = ({
               image={board.image}
               onBoardSelect={onBoardSelect}
               onDeleteBoard={onDeleteBoard}
-              setSelectedBoardId={setSelectedBoardId}
             />
           );
         })}
       </section>
     </div>
   );
+};
+
+BoardPicker.propTypes = {
+  boardsData: PropTypes.arrayOf(
+    PropTypes.shape({
+      boardId: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      owner: PropTypes.string.isRequired,
+      image: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  onBoardSelect: PropTypes.func.isRequired,
+  onDeleteBoard: PropTypes.func.isRequired,
 };
 
 export default BoardPicker;

@@ -1,6 +1,7 @@
 import React from "react";
 import "./Card.css";
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 const Card = ({
   id,
@@ -20,8 +21,6 @@ const Card = ({
   const handleEditMessage = () => {
     setEditMessage(!editMessage);
   };
-
-  console.log(id)
 
   const handleDeleteCard = () => {
     onDeleteCard(id);
@@ -86,6 +85,15 @@ const Card = ({
       </div>
     </section>
   );
+};
+
+Card.propTypes = {
+  id: PropTypes.number.isRequired,
+  likesCount: PropTypes.number.isRequired,
+  message: PropTypes.string.isRequired,
+  onUpdateLikes: PropTypes.func.isRequired,
+  onDeleteCard: PropTypes.func.isRequired,
+  onUpdateCardMessage: PropTypes.func.isRequired,
 };
 
 export default Card;

@@ -5,7 +5,7 @@ import dog from "../Assets/dog.jpg";
 import redPanda from "../Assets/red-panda.jpg";
 import sailorMoon from "../Assets/sailor-moon-anime.gif";
 import sloth from "../Assets/sloth.avif";
-// import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 const images = {
   cat,
@@ -41,6 +41,11 @@ const SelectedBoard = ({ selectedBoard, clearSelectedBoard }) => {
       </button>
     </section>
   );
+};
+
+SelectedBoard.propTypes = {
+  selectedBoard: PropTypes.object.isRequired,
+  clearSelectedBoard: PropTypes.func.isRequired,
 };
 
 export default SelectedBoard;
